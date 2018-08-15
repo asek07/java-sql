@@ -67,13 +67,44 @@ public class DBConnection {
            else {
                System.out.println("Could not insert properly.");
            }
-           
+
         }
         catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("User may have been added to db already, there may be a duplicate");
+            //e.printStackTrace();
         }
+
 
     }
 
+    public void findUserWithId(int id) {
+        Connection con = getConnection();
+
+        try {
+
+            PreparedStatement ps = con.prepareStatement("SELECT first_name, last_name from USERS where user_id=?");
+
+            ps.setInt(1, id);
+
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()) {
+
+                //Formatting strings
+                String firstname =  rs.getString("first_name").substring(0,1).toUpperCase() + rs.getString("first_name").substring(1);
+                String lastname =  rs.getString("last_name").substring(0,1).toUpperCase() + rs.getString("last_name").substring(1);
+
+                System.out.println("User found!");
+                System.out.println("Full Name: " + firstname + " " + lastname);
+            }
+            else {
+                System.out.println("User with ID=" + id + " cannot be found in DB.");
+            }
+
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

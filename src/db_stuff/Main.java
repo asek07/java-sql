@@ -12,9 +12,11 @@ public class Main {
 
 //        db.getAllUserInfo();
 
-        db.addNewUser(andy);
+       // db.addNewUser(andy);
 
-        db.getAllUserInfo();
+//        db.getAllUserInfo();
+
+        db.findUserWithId(111);
 
     }
 
