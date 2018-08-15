@@ -10,7 +10,8 @@ public class DBConnection {
 
         try {
             con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/sys?useSSL=false&serverTimezone=UTC", "root", "password");
+                    "jdbc:mysql://localhost:3306/sys?useSSL=false&serverTimezone=UTC", "root",
+                    "password");
             // MySQL: "jdbc:mysql://hostname:port/databaseName", "username", "password"
         }
         catch (SQLException e) {
@@ -33,7 +34,8 @@ public class DBConnection {
                 String firstname = rset.getString("first_name");
                 String lastname = rset.getString("last_name");
 
-                System.out.println(user + " = " + firstname.substring(0,1).toUpperCase() + firstname.substring(1) + " " + lastname.substring(0,1).toUpperCase() + lastname.substring(1));
+                System.out.println(user + " = " + firstname.substring(0,1).toUpperCase() + firstname.substring(1)
+                        + " " + lastname.substring(0,1).toUpperCase() + lastname.substring(1));
             }
         }
         catch (Exception e) {
@@ -84,8 +86,10 @@ public class DBConnection {
             if(rs.next()) {
 
                 //Formatting strings
-                String firstname =  rs.getString("first_name").substring(0,1).toUpperCase() + rs.getString("first_name").substring(1);
-                String lastname =  rs.getString("last_name").substring(0,1).toUpperCase() + rs.getString("last_name").substring(1);
+                String firstname =  rs.getString("first_name").substring(0,1).toUpperCase()
+                        + rs.getString("first_name").substring(1);
+                String lastname =  rs.getString("last_name").substring(0,1).toUpperCase()
+                        + rs.getString("last_name").substring(1);
 
                 System.out.println("User found!");
                 System.out.println("Full Name: " + firstname + " " + lastname);
