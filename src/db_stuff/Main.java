@@ -10,7 +10,15 @@ public class Main {
 
         DBUser andy = new DBUser(12345, "asek", "Andy", "Sekulovski", "Male", "password");
 
-       db.addNewUser(andy);
+        DBUser mirko = new DBUser(88888, "mirk0", "Mirko", "Pal", "Male", "password");
+
+        db.addNewUser(mirko);
+
+        db.findUserWithId(mirko.getId());
+
+        //db.getAllUserInfo();
+
+       //db.addNewUser(andy);
 
         db.findUserWithId(andy.getId());
 
@@ -22,7 +30,7 @@ public class Main {
 
         db.findUserWithId(andy.getId());
 
-        db.updateUsername(andy.getId(), "ANDYSEK");
+        db.updateUsername(andy.getId(), "asek07");
 
         db.getAllUserInfo();
 
