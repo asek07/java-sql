@@ -16,7 +16,16 @@ public class Main {
 
 //        db.getAllUserInfo();
 
-        db.findUserWithId(111);
+        db.findUserWithId(andy.getId());
+
+        db.deleteUser(andy.getId());
+
+        db.findUserWithId(andy.getId());
+
+
+        db.addNewUser(andy);
+
+        db.findUserWithId(andy.getId());
 
     }
 

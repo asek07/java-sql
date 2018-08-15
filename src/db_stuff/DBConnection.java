@@ -20,6 +20,7 @@ public class DBConnection {
         return con;
     }
 
+    //RETURN ALL USER INFORMATION FROM DB (first & last name only)
     public void getAllUserInfo() {
 
         Connection con = getConnection();
@@ -44,6 +45,7 @@ public class DBConnection {
 
     }
 
+    //ADD A NEW DB USER
     public void addNewUser(DBUser u) {
 
         Connection con = getConnection();
@@ -71,12 +73,13 @@ public class DBConnection {
         }
         catch (Exception e) {
             System.out.println("User may have been added to db already, there may be a duplicate");
-            //e.printStackTrace();
+            e.printStackTrace();
         }
 
 
     }
 
+    //LOOKUP A USER BASED ON THEIR UNIQUE ID
     public void findUserWithId(int id) {
         Connection con = getConnection();
 
@@ -106,5 +109,31 @@ public class DBConnection {
             e.printStackTrace();
         }
     }
+
+    //DELETE A USER FROM DB BASED ON ID
+    public void deleteUser(int id) {
+        Connection con = getConnection();
+
+        try {
+
+            PreparedStatement ps = con.prepareStatement("DELETE from USERS where user_id=?");
+
+            ps.setInt(1, id);
+            int i = ps.executeUpdate();
+
+            if(i != 0) {
+                System.out.println("Delete success.");
+            }
+            else {
+                System.out.println("Delete failed.");
+            }
+
+        }
+        catch(Exception e) {
+            System.out.println("User may not exist in the DB.");
+            e.printStackTrace();
+        }
+    }
+
 
 }
